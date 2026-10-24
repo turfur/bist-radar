@@ -27,7 +27,7 @@ details{background:#10152180;border:1px solid #232c3d;border-radius:12px;padding
 summary{cursor:pointer;color:#8892a0;font-size:14px;padding:6px 0}
 </style></head><body>
 <h2>TAHTACI DÖNGÜSÜ &mdash; Formalizasyon Örneği</h2>
-<div class="sub">Örnek / şablon sayfa &middot; 25.10.2026 &middot; Veri kaynağı: turfur.github.io/bist-radar (24.10.2026 raporu, Ekim 2026 arşivi) &middot; Eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
+<div class="sub">Örnek / şablon sayfa &middot; 25.10.2026 &middot; H1 bölümü TAM EVREN GERÇEK ARAŞTIRMASIYLA güncellendi: 629 hisse, 454 işlem günü (2025-01-01&rarr;2026-10-23), radar.py metodolojisi &middot; Diğer ölçümler: turfur.github.io/bist-radar (24.10.2026 raporu) &middot; Eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
 
 <div class="warn"><b>ÖNGÖRÜ (sahibinin hipotezi):</b><br>
 <b>H1 &mdash; Sayı hipotezi:</b> Borsa İstanbul'da her gün <b>en az 5, en fazla 9</b> hisse tavan yapıyor.<br>
@@ -35,50 +35,48 @@ summary{cursor:pointer;color:#8892a0;font-size:14px;padding:6px 0}
 Bu sayfa H1'i eldeki gerçek veriyle sınar, H2'yi test edilebilir bir faz modeline (TT-Döngü) çevirir ve ayırt edici testleri listeler.</div>
 
 <h3 style="color:#16C784">1. H1 SINAMA &mdash; günde kaç tavan?</h3>
-<div class="leg">bist-radar arşivindeki son 8 işlem günü (14&ndash;23 Ekim 2026), günlük tavan sayıları. Yeşil bant = öngörülen [5, 9] aralığı. Kırmızı bar = üst sınır aşılıyor.</div>
-<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Günlük tavan sayıları, 14-23 Ekim 2026">
-  <rect x="50" y="167" width="690" height="37" fill="#16C784" opacity="0.10"/>
-  <line x1="50" y1="167" x2="740" y2="167" stroke="#16C784" stroke-width="1" stroke-dasharray="5,4" opacity="0.7"/>
-  <line x1="50" y1="204" x2="740" y2="204" stroke="#16C784" stroke-width="1" stroke-dasharray="5,4" opacity="0.7"/>
-  <text x="744" y="171" fill="#16C784" font-size="12" text-anchor="end" dx="-4">9</text>
-  <text x="744" y="208" fill="#16C784" font-size="12" text-anchor="end" dx="-4">5</text>
+<div class="leg">GERÇEK ARAŞTIRMA (25.10.2026): radar.py'nin kendi metodolojisiyle (Yahoo 2y bar, ret&ge;%9,5) tam evren 629 hisse tarandı, 2025-01-01&rarr;2026-10-23 (454 işlem günü, 7335 tavan). Günlük tavan adedi dağılımı &mdash; yeşil küme öngörülen [5,9] bandı, kırmızı kümler bandın dışı:</div>
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Günlük tavan adedi dağılımı, 2025 Ocak - 2026 Ekim, 454 gün">
   <g stroke="#232c3d" stroke-width="1">
-    <line x1="50" y1="250" x2="740" y2="250"/><line x1="50" y1="204" x2="740" y2="204"/>
-    <line x1="50" y1="158" x2="740" y2="158"/><line x1="50" y1="112" x2="740" y2="112"/>
-    <line x1="50" y1="66" x2="740" y2="66"/><line x1="50" y1="20" x2="740" y2="20"/>
+    <line x1="50" y1="250" x2="740" y2="250"/><line x1="50" y1="210" x2="740" y2="210"/>
+    <line x1="50" y1="171" x2="740" y2="171"/><line x1="50" y1="131" x2="740" y2="131"/>
+    <line x1="50" y1="91" x2="740" y2="91"/><line x1="50" y1="52" x2="740" y2="52"/>
   </g>
   <g fill="#8892a0" font-size="12" text-anchor="end">
-    <text x="44" y="254">0</text><text x="44" y="208">5</text><text x="44" y="162">10</text>
-    <text x="44" y="116">15</text><text x="44" y="70">20</text><text x="44" y="24">25</text>
+    <text x="44" y="254">0</text><text x="44" y="214">25</text><text x="44" y="175">50</text>
+    <text x="44" y="135">75</text><text x="44" y="95">100</text><text x="44" y="56">125</text>
   </g>
   <g>
-    <rect x="65"  y="158" width="60" height="92"  fill="#EA3943" rx="4"/>
-    <rect x="150" y="75"  width="60" height="175" fill="#EA3943" rx="4"/>
-    <rect x="235" y="158" width="60" height="92"  fill="#EA3943" rx="4"/>
-    <rect x="320" y="140" width="60" height="110" fill="#EA3943" rx="4"/>
-    <rect x="405" y="38"  width="60" height="212" fill="#EA3943" rx="4"/>
-    <rect x="490" y="195" width="60" height="55"  fill="#16C784" rx="4"/>
-    <rect x="575" y="176" width="60" height="74"  fill="#16C784" rx="4"/>
-    <rect x="660" y="112" width="60" height="138" fill="#EA3943" rx="4"/>
+    <rect x="65"  y="221" width="60" height="29"  fill="#EA3943" rx="4"/>
+    <rect x="150" y="142" width="60" height="108" fill="#16C784" rx="4"/>
+    <rect x="235" y="75"  width="60" height="175" fill="#EA3943" rx="4"/>
+    <rect x="320" y="50"  width="60" height="200" fill="#EA3943" rx="4"/>
+    <rect x="405" y="133" width="60" height="117" fill="#EA3943" rx="4"/>
+    <rect x="490" y="188" width="60" height="62"  fill="#EA3943" rx="4"/>
+    <rect x="575" y="226" width="60" height="24"  fill="#EA3943" rx="4"/>
+    <rect x="660" y="244" width="60" height="6"   fill="#EA3943" rx="4"/>
   </g>
   <g fill="#e8ecf1" font-size="13" font-weight="700" text-anchor="middle">
-    <text x="95" y="150">10</text><text x="180" y="67">19</text><text x="265" y="150">10</text>
-    <text x="350" y="132">12</text><text x="435" y="30">23</text><text x="520" y="187">6</text>
-    <text x="605" y="168">8</text><text x="690" y="104">15</text>
+    <text x="95" y="213">18</text><text x="180" y="134">68</text><text x="265" y="67">110</text>
+    <text x="350" y="42">126</text><text x="435" y="125">74</text><text x="520" y="180">39</text>
+    <text x="605" y="218">15</text><text x="690" y="238">4</text>
   </g>
   <g fill="#8892a0" font-size="12" text-anchor="middle">
-    <text x="95" y="268">14</text><text x="180" y="268">15</text><text x="265" y="268">16</text>
-    <text x="350" y="268">19</text><text x="435" y="268">20</text><text x="520" y="268">21</text>
-    <text x="605" y="268">22</text><text x="690" y="268">23</text>
-    <text x="395" y="290">Ekim 2026 (gün)</text>
+    <text x="95" y="268">1-4</text><text x="180" y="268">5-9</text><text x="265" y="268">10-14</text>
+    <text x="350" y="268">15-19</text><text x="435" y="268">20-24</text><text x="520" y="268">25-29</text>
+    <text x="605" y="268">30-39</text><text x="690" y="268">40+</text>
+    <text x="395" y="290">günlük tavan adedi (kümeler) &middot; gün sayısı</text>
   </g>
 </svg>
-<div class="card"><b>Ölçüm (n=8 gün):</b> değerler <span class="v">10, 19, 10, 12, 23, 6, 8, 15</span><br>
-Min <b>6</b> &middot; Maks <b>23</b> &middot; Medyan <b>11</b> &middot; Ortalama <b>12,9</b><br>
-<span class="k">&ge;5 olan günler: 8/8</span> (H1-alt sınırı tutuyor) &middot;
-<span class="r">&le;9 olan günler: 2/8 (%25)</span> (H1-üst sınırı tutmuyor) &middot; bant içi: 2/8<br>
-<b>Yıllık ortalama (aynı kaynak):</b> 2025: 1586 tavan / ~250 gün &asymp; <b>6,3/gün</b>; 2026: 1528 / ~205 gün &asymp; <b>7,4/gün</b> &rarr; yıllık ortalamabanda, ama günlük dağılım banttan çok geniş.</div>
-<div class="warn"><b>H1 KARAR:</b> <span class="k">ORTALAMA haklısınız</span>, <span class="r">GÜNLÜK BANT yanılmışsınız.</span> Tipik gün yok; desen <i>patlamalı</i>: sessiz günler (6, 8) ve patlama günleri (19, 23) birbirini kovalıyor. Kaynağın kendi oto-korelasyon ölçümü (lag1 +0,33) bunu doğruluyor: tavanlar bağımsız değil, kümeleniyor. Dar bant hipotezi reddedilir; kümelenme yapısı ise H2 (bilinçli üretim) ile <i>uyumlu</i> ama tek başına kanıt değil (bkz. Bölüm 4).</div>
+<div class="card"><b>Ölçüm (454 gün, 629 hisse):</b> günlük tavan <span class="v">min 1 &middot; medyan 16 &middot; ortalama 16,2 &middot; maks 52</span><br>
+<span class="k">&ge;5 tavan olan günler: %96,0</span> (436/454; H1-alt sınırı neredeyse hep tutuyor) &middot;
+<span class="r">&le;9 tavan olan günler: %18,9</span> &middot; <span class="r">[5,9] bandına giren gün: 68/454 = %15,0</span><br>
+Uç günler gerçek olaydır, veri hatası değil: <b>21 Mayıs 2026 çöküş günü 1 tavan</b> (THYAO −%7, EREGL −%9) &rarr; <b>ertesi gün 52 tavanla</b> tepki. Diğer düşük günler: 02, 13 Haz 2025 ve 28-31 Oca 2025 (2 tavan), 16 Eyl 2026 (2 tavan).<br>
+Çapraz doğrulama: Ekim 2026 günlük sayıları sitenizin TV tabanlı ölçümüyle birebir uyuşuyor (19 Ek 12✓, 21 Ek 6✓, 22 Ek 8✓, 23 Ek 15✓). Not: sitenin "2026-10: 103" aylık sayacı 14 Ekim'de başlamış &mdash; gerçek Ekim toplamı (23'e kadar) <b>386</b>.</div>
+<div class="warn"><b>H1 KARAR (tam evren):</b> <span class="k">ORTALAMA haklısınız</span> (typik gün 16 tavan, günlerin %96'sında &ge;5 tavan var), <span class="r">GÜNLÜK BAND [5,9] kesinlikle yanılmışsınız</span> (yalnızca %15'i bandda; maks 52). &mdash; Ancak sizin [5,9] sezginiz boşa değil: <b>sitenizin 292'lik "görünür hisse" ölçümünde</b> medyan 7,0 ve band payı %48,5 &mdash; izlenen/likit tahtada sezgi doğru. Tavan üretimi dar bantta sabit değil, <b>rejimle şişen-çekilen bir kümeleme</b>: çöküş günü 1, tepki günü 52 (oto-korelasyon lag1 +0,33 ile uyumlu). Bu kümeleme yapısı H2 (bilinçli üretim) ile <i>uyumlu</i> ama tek başına kanıt değil (bkz. Bölüm 4).</div>
+<div class="card"><b>GERÇEK ARAŞTIRMA &mdash; 2025+2026 TOP 10 (tavan adedi):</b><br>
+<span class="chip">TRHOL 68</span><span class="chip">HEDEF 64</span><span class="chip">SMRVA 58</span><span class="chip">MANAS 52</span><span class="chip">BURVA 50</span><span class="chip">DOGUB 50</span><span class="chip">HDFGS 49</span><span class="chip">GUNDG 47</span><span class="chip">VSNMD 47</span><span class="chip">SKYLP 44</span><br>
+<span class="leg">Yıl top-20'lerinin iki yılda da girenleri (mudavim, tam evren): yalnızca <b>HEDEF</b> ve <b>DOGUB</b>. Sitenin 7 kişilik mudavim listesi (HEDEF, BRMEN, MANAS, TMPOL, ICUGS, SKYLP, HDFGS) 292'lik evrenle ölçülmüştür &mdash; evren büyüyünce liste değişiyor; "mudavim" tanımı evrene duyarlıdır. Yeni nesil zirveler: TRHOL 2025'te 57 tavanla lig lideri (sitenin 17 Ekim liginde yok &mdash; radar.py'ye sonradan eklendi), 2026 lideri ZGYO 33.</span></div>
 
 <h3 style="color:#F3BA2F">2. FORMALİZASYON &mdash; TT-Döngü (Taban&ndash;Tavan Döngüsü)</h3>
 <div class="leg">Hipotezinizdeki "taban da bilinçli" fikri modelin merkezinde: taban tavanın karşıtı değil, <b>döngünün hammaddesi</b>. Dört faz, her fazın gözlemlenebilir imzası ve kaynağın kendi ölçümleriyle eşleşmesi:</div>
@@ -101,10 +99,10 @@ Min <b>6</b> &middot; Maks <b>23</b> &middot; Medyan <b>11</b> &middot; Ortalama
 <tr><td class="v">P3</td><td>Operatörü olmayan isim bir kez tavan yapar, tekrar etmez</td><td class="v">tek tavan isimlerinde tekrar ~0; mudavimlerde %83 tekrar (ort 3,2 adet/60g)</td><td><span class="chip ok">DESTEKLI</span></td></tr>
 <tr><td class="v">P4</td><td>Seri bittiyse (mal dağıtıldıysa) kovalama zarardır</td><td class="v">bitiş+3. gün ort -%3; boşaltım sonrası 20g medyan -%11</td><td><span class="chip ok">DESTEKLI</span></td></tr>
 <tr><td class="v">P5</td><td>Tavanlar zamanda kümelenir (koordinasyon imzası)</td><td class="v">oto-kor. lag1 +0,33; yoğun gün sonrası 20,0 vs ort 16,9 tavan</td><td><span class="chip ok">DESTEKLI</span></td></tr>
-<tr><td class="v">P6</td><td>Günlük tavan sayısı dar bantta (5&ndash;9)</td><td class="v">medyan 11, maks 23; bant içi 2/8 gün (ama yıllık ort 6,3&ndash;7,4)</td><td><span class="chip bad">RED / KISMEN</span></td></tr>
+<tr><td class="v">P6</td><td>Günlük tavan sayısı dar bantta (5&ndash;9)</td><td class="v">tam evren: medyan 16, maks 52, bant içi %15 (292'lik evrende medyan 7, bant içi %48,5)</td><td><span class="chip bad">RED</span></td></tr>
 <tr><td class="v">P7</td><td>Taban günleri, tavan takviminden sonra artar (T4 fazı)</td><td class="v">&mdash; (taban sayıları henüz loglanmıyor)</td><td><span class="chip mid">OLCULMEDI</span></td></tr>
 <tr><td class="v">P8</td><td>A&rarr;B tipi öncül-ardıl kenarlar yıl içinde kararlıdır</td><td class="v">258 kenar ölçülmüş (lift&ge;2); yıl1/yıl2 ayrıştırması yok</td><td><span class="chip mid">OLCULMEDI</span></td></tr>
-<tr><td class="v">P9</td><td>Mal sahibi sadıktır: aynı isimler yıllarca döner (mudavim)</td><td class="v">mudavim payı %39; 2025&cap;2026 top-20 kesişimi 7 isim (HEDEF, BRMEN, MANAS...)</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P9</td><td>Mal sahibi sadıktır: aynı isimler yıllarca döner (mudavim)</td><td class="v">mudavim payı %39; tam evren top-20 kesişimi: HEDEF, DOGUB (sitenin 7'lik listesi 292'lik evrenin ölçümü)</td><td><span class="chip mid">KISMEN</span></td></tr>
 </table>
 <div class="leg">P1&ndash;P5 ve P9 modelin çıktığı ölçümlerle tutarlı (dairesel akıl yürütme riskine dikkat: bunlar modeli <i>kurmak için</i> kullanılan veriler; gerçek sınama ileriye dönük olmalı). P7 ve P8 bu sayfanın önerdiği <b>yeni</b> ölçümlerdir.</div>
 
@@ -122,5 +120,5 @@ Bu sayfa manipülasyon iddiasının kanıtı değildir; iddiayı <b>yanlışlana
 Loglanacak yeni seriler: günlük tavan sayısı, günlük <b>taban</b> sayısı (P7/D3), relvol&lt;1,5 tavan payı (D1), yıl1/yıl2 kenar tabloları (D2), tavan+taban birleşik lig (D4). Karne mantığı (5 gün sonra gerçekleşen sonuçla işaretle) aynen uygulanır.</div>
 </details>
 
-<div class="foot">Örnek sayfa &middot; tüm ölçümler turfur.github.io/bist-radar 24.10.2026 raporundan alıntıdır; 8 günlük örneklem küçüktür (n=8), kararlar bu örneklemle verilmez &middot; eğitim amaçlıdır, yatırım tavsiyesi değildir.</div>
+<div class="foot">Örnek sayfa &middot; H1 bölümü 25.10.2026'da radar.py metodolojisiyle tam evrenden (629 hisse, Yahoo 2y, ret&ge;%9,5) yeniden ölçüldü; Ekim 2026 günlük sayıları sitenin TV tabanlı ölçümüyle çapraz doğrulandı &middot; Yahoo verisi küçük hisselerde bozuk bar içerebilir (radar.py'nin kendi limiti) &middot; eğitim amaçlıdır, yatırım tavsiyesi değildir.</div>
 </body></html>
