@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tahtacı Döngüsü — Formalizasyon Örneği</title><style>
+body{background:#0B0E14;color:#e8ecf1;font-family:system-ui;margin:0;padding:12px;max-width:900px;margin:0 auto}
+h2{margin:6px 0}.sub{color:#8892a0;font-size:13px;margin-bottom:12px}
+.card{background:#131926;border:1px solid #232c3d;border-radius:12px;padding:12px;margin:10px 0}
+.warn{background:#2a2113;border:1px solid #8a6d2f;border-radius:10px;padding:10px;font-size:14px;margin:12px 0}
+.note{background:#131926;border:1px solid #2c3a55;border-radius:10px;padding:10px;font-size:13px;margin:12px 0}
+.chip{display:inline-block;background:#1a2233;border:1px solid #2c3a55;border-radius:8px;padding:4px 8px;margin:3px;font-size:13px}
+.chip.ok{border-color:#16C784;color:#16C784}
+.chip.bad{border-color:#EA3943;color:#EA3943}
+.chip.mid{border-color:#F3BA2F;color:#F3BA2F}
+.yrow{background:#131926;border:1px solid #232c3d;border-radius:10px;padding:8px 10px;margin:6px 0;font-size:14px}
+.leg{color:#8892a0;font-size:13px;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #232c3d;padding:6px 8px;text-align:left}
+th{color:#8892a0;font-weight:600;background:#101521}
+td.v{font-family:ui-monospace,monospace}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:10px 0}
+.phase{flex:1;min-width:150px;background:#131926;border:1px solid #232c3d;border-radius:10px;padding:10px;font-size:13px}
+.phase h4{margin:0 0 6px 0;font-size:14px}
+.arrow{align-self:center;color:#F3BA2F;font-size:20px;font-weight:700}
+.k{color:#16C784;font-weight:700}.r{color:#EA3943;font-weight:700}.y{color:#F3BA2F;font-weight:700}
+.foot{color:#8892a0;font-size:12px;margin-top:14px;border-top:1px solid #232c3d;padding-top:8px}
+svg{width:100%;height:auto}
+details{background:#10152180;border:1px solid #232c3d;border-radius:12px;padding:8px 12px;margin:12px 0}
+summary{cursor:pointer;color:#8892a0;font-size:14px;padding:6px 0}
+</style></head><body>
+<h2>TAHTACI DÖNGÜSÜ &mdash; Formalizasyon Örneği</h2>
+<div class="sub">Örnek / şablon sayfa &middot; 25.10.2026 &middot; H1 bölümü TAM EVREN GERÇEK ARAŞTIRMASIYLA güncellendi: 629 hisse, 454 işlem günü (2025-01-01&rarr;2026-10-23), radar.py metodolojisi &middot; Diğer ölçümler: turfur.github.io/bist-radar (24.10.2026 raporu) &middot; Eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
+
+<div class="warn"><b>ÖNGÖRÜ (sahibinin hipotezi):</b><br>
+<b>H1 &mdash; Sayı hipotezi:</b> Borsa İstanbul'da her gün <b>en az 5, en fazla 9</b> hisse tavan yapıyor.<br>
+<b>H2 &mdash; Aktör hipotezi:</b> Tavanlar ve tabanlar rastgele değildir; tahtacı denen aktörler bu hisseleri bir formalizasyon dahilinde, döngüsel olarak <b>hem tavan hem taban yaptırıyor</b> (tavan = satış üretimi, taban = yeniden toplama).<br>
+Bu sayfa H1'i eldeki gerçek veriyle sınar, H2'yi test edilebilir bir faz modeline (TT-Döngü) çevirir ve ayırt edici testleri listeler.</div>
+
+<h3 style="color:#16C784">1. H1 SINAMA &mdash; günde kaç tavan?</h3>
+<div class="leg">GERÇEK ARAŞTIRMA (25.10.2026): radar.py'nin kendi metodolojisiyle (Yahoo 2y bar, ret&ge;%9,5) tam evren 629 hisse tarandı, 2025-01-01&rarr;2026-10-23 (454 işlem günü, 7335 tavan). Günlük tavan adedi dağılımı &mdash; yeşil küme öngörülen [5,9] bandı, kırmızı kümler bandın dışı:</div>
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Günlük tavan adedi dağılımı, 2025 Ocak - 2026 Ekim, 454 gün">
+  <g stroke="#232c3d" stroke-width="1">
+    <line x1="50" y1="250" x2="740" y2="250"/><line x1="50" y1="210" x2="740" y2="210"/>
+    <line x1="50" y1="171" x2="740" y2="171"/><line x1="50" y1="131" x2="740" y2="131"/>
+    <line x1="50" y1="91" x2="740" y2="91"/><line x1="50" y1="52" x2="740" y2="52"/>
+  </g>
+  <g fill="#8892a0" font-size="12" text-anchor="end">
+    <text x="44" y="254">0</text><text x="44" y="214">25</text><text x="44" y="175">50</text>
+    <text x="44" y="135">75</text><text x="44" y="95">100</text><text x="44" y="56">125</text>
+  </g>
+  <g>
+    <rect x="65"  y="221" width="60" height="29"  fill="#EA3943" rx="4"/>
+    <rect x="150" y="142" width="60" height="108" fill="#16C784" rx="4"/>
+    <rect x="235" y="75"  width="60" height="175" fill="#EA3943" rx="4"/>
+    <rect x="320" y="50"  width="60" height="200" fill="#EA3943" rx="4"/>
+    <rect x="405" y="133" width="60" height="117" fill="#EA3943" rx="4"/>
+    <rect x="490" y="188" width="60" height="62"  fill="#EA3943" rx="4"/>
+    <rect x="575" y="226" width="60" height="24"  fill="#EA3943" rx="4"/>
+    <rect x="660" y="244" width="60" height="6"   fill="#EA3943" rx="4"/>
+  </g>
+  <g fill="#e8ecf1" font-size="13" font-weight="700" text-anchor="middle">
+    <text x="95" y="213">18</text><text x="180" y="134">68</text><text x="265" y="67">110</text>
+    <text x="350" y="42">126</text><text x="435" y="125">74</text><text x="520" y="180">39</text>
+    <text x="605" y="218">15</text><text x="690" y="238">4</text>
+  </g>
+  <g fill="#8892a0" font-size="12" text-anchor="middle">
+    <text x="95" y="268">1-4</text><text x="180" y="268">5-9</text><text x="265" y="268">10-14</text>
+    <text x="350" y="268">15-19</text><text x="435" y="268">20-24</text><text x="520" y="268">25-29</text>
+    <text x="605" y="268">30-39</text><text x="690" y="268">40+</text>
+    <text x="395" y="290">günlük tavan adedi (kümeler) &middot; gün sayısı</text>
+  </g>
+</svg>
+<div class="card"><b>Ölçüm (454 gün, 629 hisse):</b> günlük tavan <span class="v">min 1 &middot; medyan 16 &middot; ortalama 16,2 &middot; maks 52</span><br>
+<span class="k">&ge;5 tavan olan günler: %96,0</span> (436/454; H1-alt sınırı neredeyse hep tutuyor) &middot;
+<span class="r">&le;9 tavan olan günler: %18,9</span> &middot; <span class="r">[5,9] bandına giren gün: 68/454 = %15,0</span><br>
+Uç günler gerçek olaydır, veri hatası değil: <b>21 Mayıs 2026 çöküş günü 1 tavan</b> (THYAO −%7, EREGL −%9) &rarr; <b>ertesi gün 52 tavanla</b> tepki. Diğer düşük günler: 02, 13 Haz 2025 ve 28-31 Oca 2025 (2 tavan), 16 Eyl 2026 (2 tavan).<br>
+Çapraz doğrulama: Ekim 2026 günlük sayıları sitenizin TV tabanlı ölçümüyle birebir uyuşuyor (19 Ek 12✓, 21 Ek 6✓, 22 Ek 8✓, 23 Ek 15✓). Not: sitenin "2026-10: 103" aylık sayacı 14 Ekim'de başlamış &mdash; gerçek Ekim toplamı (23'e kadar) <b>386</b>.</div>
+<div class="warn"><b>H1 KARAR (tam evren):</b> <span class="k">ORTALAMA haklısınız</span> (typik gün 16 tavan, günlerin %96'sında &ge;5 tavan var), <span class="r">GÜNLÜK BAND [5,9] kesinlikle yanılmışsınız</span> (yalnızca %15'i bandda; maks 52). &mdash; Ancak sizin [5,9] sezginiz boşa değil: <b>sitenizin 292'lik "görünür hisse" ölçümünde</b> medyan 7,0 ve band payı %48,5 &mdash; izlenen/likit tahtada sezgi doğru. Tavan üretimi dar bantta sabit değil, <b>rejimle şişen-çekilen bir kümeleme</b>: çöküş günü 1, tepki günü 52 (oto-korelasyon lag1 +0,33 ile uyumlu). Bu kümeleme yapısı H2 (bilinçli üretim) ile <i>uyumlu</i> ama tek başına kanıt değil (bkz. Bölüm 4).</div>
+<div class="card"><b>GERÇEK ARAŞTIRMA &mdash; 2025+2026 TOP 10 (tavan adedi):</b><br>
+<span class="chip">TRHOL 68</span><span class="chip">HEDEF 64</span><span class="chip">SMRVA 58</span><span class="chip">MANAS 52</span><span class="chip">BURVA 50</span><span class="chip">DOGUB 50</span><span class="chip">HDFGS 49</span><span class="chip">GUNDG 47</span><span class="chip">VSNMD 47</span><span class="chip">SKYLP 44</span><br>
+<span class="leg">Yıl top-20'lerinin iki yılda da girenleri (mudavim, tam evren): yalnızca <b>HEDEF</b> ve <b>DOGUB</b>. Sitenin 7 kişilik mudavim listesi (HEDEF, BRMEN, MANAS, TMPOL, ICUGS, SKYLP, HDFGS) 292'lik evrenle ölçülmüştür &mdash; evren büyüyünce liste değişiyor; "mudavim" tanımı evrene duyarlıdır. Yeni nesil zirveler: TRHOL 2025'te 57 tavanla lig lideri (sitenin 17 Ekim liginde yok &mdash; radar.py'ye sonradan eklendi), 2026 lideri ZGYO 33.</span></div>
+
+<h3 style="color:#F3BA2F">2. FORMALİZASYON &mdash; TT-Döngü (Taban&ndash;Tavan Döngüsü)</h3>
+<div class="leg">Hipotezinizdeki "taban da bilinçli" fikri modelin merkezinde: taban tavanın karşıtı değil, <b>döngünün hammaddesi</b>. Dört faz, her fazın gözlemlenebilir imzası ve kaynağın kendi ölçümleriyle eşleşmesi:</div>
+<div class="flow">
+  <div class="phase"><h4 style="color:#8892a0">T1 &middot; TOPLAMA<br>(taban üretilir)</h4>Fiyat sıkışır, hacim kurur (relvol&lt;1), getiri ~0. Halka sıkışmadan almaz: "toplama okuyuşu" lift 0,2&ndash;0,5x, medyan ~0. Zayıf eller tabanda korkup satar &mdash; mal bu fazda toplanır.</div>
+  <div class="arrow">&rarr;</div>
+  <div class="phase"><h4 style="color:#16C784">T2 &middot; YÜKSELTME<br>(tavan üretilir)</h4>Kilitli tavan (relvol&lt;1,5 = halka satmıyor, kontrol eldede). Seri ritmi: tekrar medyanı 8 gün, 10 günde %54 tekrar. Kilitli tavan ertesi gün ort +%3,26. İlk tavan önceden bilinmez (T-1 hacim sinyali yalnızca %31) &mdash; başlangıç ani.</div>
+  <div class="arrow">&rarr;</div>
+  <div class="phase"><h4 style="color:#F3BA2F">T3 &middot; DAĞITIM<br>(tavan halkaya satılır)</h4>Izlı tavan (relvol&ge;2 ve bant&ge;6) = halkaya arz imzası: boşaltım riski %43 (kilitlide %25). Teleden sonraki 10 günde %74'ü -%10. Model listesindeki "IzLI = kovalanmaz" kuralı bu fazın çıktısıdır.</div>
+  <div class="arrow">&rarr;</div>
+  <div class="phase"><h4 style="color:#EA3943">T4 &middot; TEMİZLEME<br>(yeni taban üretilir)</h4>Boşaltım günü (r&le;-4% ve 2x hacim) sonrası 20 gün medyan -%11. Seri bitiminden 3. gün ort -%3. Fiyat T1'in toplayacağı seviyeye geri düşer &mdash; döngü kapanır, tur medyanı 19 gün (boşaltım 8g / yatay 3g / alım 8g).</div>
+</div>
+<div class="note"><b>Modelin özü:</b> tavan sayısı her gün sabit değilse bile (H1 reddi), döngü <i>istatistikleri</i> şaşırtıcı derecede kararlı: tekrar ritmi, kilitli/ızlı ayrımı, faz süreleri. "Tahtacı borsayı istediği gibi yönetir" cümlesinin ölçülebilir hali budur &mdash; yönetim serbesti değil, <b>tekrar eden bir ritim</b>; ritim bozulduğunda (boşaltım fazı) modelin kendisi "dokunma" der.</div>
+
+<h3 style="color:#8892a0">3. TAHMİNLER &mdash; modelden çıkan testler ve durumları</h3>
+<table>
+<tr><th>#</th><th>Modelden türetilen tahmin</th><th>Eldeki ölçüm (kaynak: bist-radar)</th><th>Durum</th></tr>
+<tr><td class="v">P1</td><td>Kilitli tavan (halka satmıyor) ertesi gün sürer</td><td class="v">ertesi ort +%3,26; 10 günde tekrar %48</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P2</td><td>Yüksek hacimli/geniş bantlı (ızlı) tavan dağıtımdır, kovalanmaz</td><td class="v">boşaltım riski %43 vs kilitli %25</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P3</td><td>Operatörü olmayan isim bir kez tavan yapar, tekrar etmez</td><td class="v">tek tavan isimlerinde tekrar ~0; mudavimlerde %83 tekrar (ort 3,2 adet/60g)</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P4</td><td>Seri bittiyse (mal dağıtıldıysa) kovalama zarardır</td><td class="v">bitiş+3. gün ort -%3; boşaltım sonrası 20g medyan -%11</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P5</td><td>Tavanlar zamanda kümelenir (koordinasyon imzası)</td><td class="v">oto-kor. lag1 +0,33; yoğun gün sonrası 20,0 vs ort 16,9 tavan</td><td><span class="chip ok">DESTEKLI</span></td></tr>
+<tr><td class="v">P6</td><td>Günlük tavan sayısı dar bantta (5&ndash;9)</td><td class="v">tam evren: medyan 16, maks 52, bant içi %15 (292'lik evrende medyan 7, bant içi %48,5)</td><td><span class="chip bad">RED</span></td></tr>
+<tr><td class="v">P7</td><td>Taban günleri, tavan takviminden sonra artar (T4 fazı)</td><td class="v">&mdash; (taban sayıları henüz loglanmıyor)</td><td><span class="chip mid">OLCULMEDI</span></td></tr>
+<tr><td class="v">P8</td><td>A&rarr;B tipi öncül-ardıl kenarlar yıl içinde kararlıdır</td><td class="v">258 kenar ölçülmüş (lift&ge;2); yıl1/yıl2 ayrıştırması yok</td><td><span class="chip mid">OLCULMEDI</span></td></tr>
+<tr><td class="v">P9</td><td>Mal sahibi sadıktır: aynı isimler yıllarca döner (mudavim)</td><td class="v">mudavim payı %39; tam evren top-20 kesişimi: HEDEF, DOGUB (sitenin 7'lik listesi 292'lik evrenin ölçümü)</td><td><span class="chip mid">KISMEN</span></td></tr>
+</table>
+<div class="leg">P1&ndash;P5 ve P9 modelin çıktığı ölçümlerle tutarlı (dairesel akıl yürütme riskine dikkat: bunlar modeli <i>kurmak için</i> kullanılan veriler; gerçek sınama ileriye dönük olmalı). P7 ve P8 bu sayfanın önerdiği <b>yeni</b> ölçümlerdir.</div>
+
+<h3 style="color:#EA3943">4. AYRIM SORUNU &mdash; "tahtacı mı, tesadüf mü?"</h3>
+<div class="warn">Bölüm 2&ndash;3'teki desenler üç farklı nedenden de çıkabilir: <b>(a)</b> koordineli operatör (hipoteziniz), <b>(b)</b> temas/sürü rotasyonu (aynı hikâyeye binen kalabalık, koordinasyonsuz), <b>(c)</b> kendiliğenden kümelenme (Hawkes tipi). Üçü de P1&ndash;P5'i üretir. Ayırt edici (diagnostik) testler:<br>
+<b>D1 &mdash; Kilitli pay:</b> koordinasyon varsa tavanların relvol&lt;1,5 payı dönemsel olarak yüksek ve kararlı kalır &rarr; günlük loglanmalı.<br>
+<b>D2 &mdash; Kenar kararlılığı:</b> yıl-1'de lift&ge;2 olan A&rarr;B kenarlarının kaçta kaçı yıl-2'de de lift&ge;2? Rastgelede ~%5 beklenir; koordinasyonda yüksek.<br>
+<b>D3 &mdash; Taban senkronu (P7):</b> tavan patlamasından N gün sonra taban sayısında artış varsa T4 fazı gerçek.<br>
+<b>D4 &mdash; Çift-yönlü sadakat:</b> aynı isim hem tavan hem taban liglerinde dönüyorsa (yatay/dikey tam döngü) operatör hipotezi güçlenir.<br>
+Bu sayfa manipülasyon iddiasının kanıtı değildir; iddiayı <b>yanlışlanabilir ölçülere</b> çeviren bir çerçevedir. (Not: piyasa manipülasyonu ciddi bir suçlamadır; buradaki amaç tanımlama, ispat değil.)</div>
+
+<h3 style="color:#16C784">5. TAHTACI &Idot;Z&Idot; &mdash; üç soru, üç ölçüm (26.10.2026, tam evren 629 hisse, 454 gün, radar.py metodu)</h3>
+<div class="card"><b>&Idot;z 1 &mdash; KA&Ccedil; TAHTACI VAR?</b><br>
+Script tanımıyla (yılda &ge;3 tavan + tekrar edeni): <span class="chip">TAHTACI 324 isim</span><span class="chip">TEK 127</span><span class="chip">ORTA 33</span><span class="chip">YOK 123</span> (607 hisse ölçümü). Tam evrende 22 ayda 575 hisse en az 1 tavan atmış, bunların <b>530'u (%92) &ge;2 serilik döngü</b> gösteriyor. Yani örüntü 3-5 kişilik birkaç takımın değil, <b>~300 isimlik bir aktör ekolojisinin</b> izi. Zincir ağı (lift&ge;2, 258 kenar) <b>tek bağlı bileşen: 45 isim</b> &mdash; bu eşikte ayrı çevrelere ayrışmıyorken çevre saymak mümkün değil; 45'lik ağ "sıcak rotasyon evreni".</div>
+<div class="card"><b>&Idot;z 2 &mdash; KAÇ GÜN TAVAN YAPTIRIP SATIYORLAR? (4175 seri)</b><br>
+Seri uzunluğu: <span class="r">%67'si tek tavan</span>, %84'ü &le;2 tavan; 4+ tavan yalnızca %5,3. Medyan operasyon: <b>1-2 tavan günü</b>. SATIŞ İZİ: seri bitişinden fiyat tepesine medyan <b>12 iş günü</b>, bitişten yüksek hacimli boşaltım gününe medyan <b>10 iş günü</b> (885 seride boşaltım imzası) &rarr; kalıp: kısa pompalama &rarr; ~2 hafta içinde tepe bölgesinde dağıtım. Uzun pompalar istisnadır ve tanıdıktır: HEDEF 15 tavan (Eyl 2025), 11 tavan (Eki 2026); 14-22 tavanlık seriler tüm serilerin %1'ini bile bulmaz.</div>
+<div class="card"><b>&Idot;z 3 &mdash; TEKRAR NE ZAMAN BAŞLIYOR? (3600 geçiş)</b><br>
+Seri bitişi &rarr; sonraki seri başı: medyan <b>25 iş günü (&asymp;5 hafta)</b>, p25-p75: 12-53 gün. 10 gün içinde tekrar %20, 20 gün %44, 30 gün %57. Ritimli isimler (&ge;3 geçiş): 478 hisse; hisse medyan döngüsünün medyanı <b>30 iş günü (&asymp;6 hafta)</b>. Örnek tam iz &mdash; HEDEF: 22 ayda 20 seri; SANEL: 14 seri (9 ve 23 Ekim tavanları arası 10 iş günü); TMPOL: 1-4 tavanlık seri + 25 günlük aralar.</div>
+<div class="warn"><b>İZ KARARI:</b> Döngü izi <b>gerçek ve ölçülebilir</b>: hisse başına &asymp;6 haftalık tekrar ritmi, 1-2 tavanlık pompalar, ~2 haftada dağıtım. Ama bu iz, "belli sayıda tahtacı takımı" hipotezini değil, "tekrarlayan toplama&rarr;yükseltme&rarr;dağıtım döngüsü" gerçeğini ölçüyor &mdash; aynı ritim koordinasyonsuz sürü davranışından da çıkar (Bölüm 4, D1-D4 testleri kişi saymak için hâlâ gerekli). Kişi/ekip saymanın bu veriyle tek yolu: zincir kenarlarının yıl-1&rarr;yıl-2 kararlılığı (D2) &mdash; hâlâ ölçülmedi.</div>
+
+<h3 style="color:#EA3943">6. AYIRT EDİCİ TESTLER D1-D4 (26.10.2026, tam evren, 454 gün)</h3>
+<div class="card"><b>D1 &mdash; KİLİTLİ TAVAN PAYI (relvol&lt;1,5):</b> genel <b>%40,6</b>; aylık bant %27-49, Ekim 2026'da <b>%61,1</b>'e fırladı. Kilitli tavan piyasanın kalıcı yarısı &mdash; hipotezle uyumlu, ama ince defterli hissenin hacimsiz yükselişi de aynı imzayı üretir (ayırt edici değil).</div>
+<div class="card"><b>D2 &mdash; ZİNCİR KENAR KARARLILIĞI (kişi sayma testi):</b> 2025'te 1204 kenar (lift&ge;2, ortak&ge;4) &rarr; 2026'da yalnızca <b>49'u yaşıyor (%4,1)</b>; rastgele beklenti 16,2 kenar &rarr; <b>3x zenginleşme (anlamlı)</b>. Ama kararlıların çoğu <b>kendine kenar</b> (BEGYO&rarr;BEGYO, CRDFA&rarr;CRDFA... = kendi tekrar ritmi, koordinasyon değil). Gerçek çapraz çevre adayları: <span class="chip">LYDHO&rarr;SKYLP x3,6&rarr;x8,1</span><span class="chip">LYDYE&rarr;SKYLP</span><span class="chip">CRDFA&rarr;TMPOL</span><span class="chip">CEMZY&rarr;EMKEL</span> &mdash; kalıcı "çevre" ancak bu az sayıda kenardan aranır; zincirin kalanı yıllık tema rotasyonudur.</div>
+<div class="card"><b>D3 &mdash; TABAN SENKRONU (negatif sonuç):</b> Tavan patlamasından sonra taban gelmiyor: patlama (T&ge;20) sonrası 5 gün taban ort 9,3 vs genel 10,2; hisse düzeyinde seri bitimi sonrası 20 gün içinde taban %30,8 vs rastgele beklenti %30,0. Tabanlar tavan pompalarını değil <b>kriz günlerini</b> izliyor: 19 Mar 2025: 334 taban (EREGL/GARAN -%10), 21 May 2026: 127, Eyl 2026 kriz kümesi. &rarr; "Tahtacı tabanı da tavan gibi üretir" önermesi limit-down düzeyinde <b>reddedildi</b>: T4 fazı taban günüyle değil, <b>drift</b> ile iner (20 gün medyan -%11).</div>
+<div class="card"><b>D4 &mdash; ÇİFT YÖNLÜ SADAKAT:</b> Hisse başına tavan-taban sayısı korelasyonu <b>+0,70</b>; top-20 kesişimi 9 isim: TRHOL 68:51, HEDEF 64:49, GUNDG 47:50, TEHOL 42:59, SMRVA 58:44... "Aynı isim hem tavan hem taban liglerinde" &mdash; hipotezin en net imzası. AMA: hızlı yükselen hızlı düşer &mdash; yüksek volatilite tek başına bu korelasyonu üretir; kanıt sayılmadan önce volatilite-eşleştirilmiş kontrol grubuna karşı ölçülmeli.</div>
+<div class="warn"><b>D-TEST KARAR PANOSU:</b> <span class="chip mid">D1 uyumlu (ayırt edici değil)</span><span class="chip mid">D2 kısmen: %96 kenar kırılır, ama rastgeleden 3x kalıcı alt küme var</span><span class="chip bad">D3 RED (taban üretimi yok)</span><span class="chip mid">D4 uyumlu (henüz ayırt edici değil)</span><br>
+Net tablo: "Tek tip tahtacı her şeyi yönetir" hipotezi yerine &mdash; <b>kalıcı döngü ekolojisi (~300 isim, &asymp;6 haftalık ritim) + yıllık değişen tema rotasyonu + az sayıda gerçek kalıcı çevre adayı (D2'nin 49 kenarı) + kriz refleksi</b>. Sonraki adım: D4 için volatilite-eşleştirilmiş kontrol, D2 alt kümesinin canlı karne takibi.</div>
+
+<h3 style="color:#F3BA2F">7. 26.10 PAZARTESİ TAVAN ADAYLARI (anlık görüntü: 25.10 taraması, Cuma kapanışı)</h3>
+<div class="warn"><b>LOJİSTİK MODEL sıralaması (olasılık, garanti değil):</b> <span class="chip hot">SANEL %8</span><span class="chip hot">DOGUB %8</span><span class="chip hot">INFO %7</span><span class="chip">SAFKR %7</span><span class="chip">DIRIT %7</span><span class="chip">KERVN %7</span><span class="chip">ISKPL %7</span><span class="chip">GEREL %7</span><span class="chip">SELEC %7</span><span class="chip">BEGYO %7</span><br>
+Bağlam: walk-forward precision@1 %35,9 (ilk adayın tavan olma sıklığı; %64 ihtimalle olmaz) | taban oran %2,74 | canlı karne %40 (n=5 &mdash; hâlâ hiçbir şey kanıtlamıyor, 33 karar bekliyor) | <b>MODEL LİSTESİ GİRİŞ LİSTESİ DEĞİLDİR</b> &mdash; izgara kuralına göre bugün RADARDA sinyali: 0 &rarr; işlem beklentisi 0.</div>
+<div class="card"><b>ZİNCİR ADAYLARI (Cuma tavan atan 15 isimden çıkan kenarlar):</b><br>
+<span class="chip hot">INFO&rarr;GEDIK x4,4</span><span class="chip hot">SANEL&rarr;VKING x3,5</span><span class="chip hot">GEREL&rarr;KTLEV x3,5</span><span class="chip hot">SANEL&rarr;BAHKM x3,4</span><span class="chip hot">INFO&rarr;ICUGS x3,4</span><span class="chip hot">GEREL&rarr;TMPOL x3,7</span><span class="chip hot">SANEL&rarr;BORLS x3,0</span><span class="chip hot">GEREL&rarr;SKYLP x2,8</span><span class="chip hot">SANEL&rarr;BRMEN x2,6</span><span class="chip hot">SANEL&rarr;SKYLP x2,5</span><br>
+<span class="leg">Uyarı (D2 bulgusu): kenarların yalnızca %4'ü yıl ötesinde kalıcı &mdash; bu kenarların çoğu tema rotasyonudur; 5-8 olaylık zayıf kenarlardır. "Adaylık", izleme sırasıdır, tetikleyici değil.</span></div>
+<div class="card"><b>YOĞUNLUK BEKLENTİSİ:</b> Cuma 15 tavan; Hawkes modeli Pazartesi için <b>~14 tavan</b> bekliyor (DURUM: NORM; kümelenme sürüyor). Kilitli tavanlardan (DIRIT, ISKPL, KERVN, SAFKR, DOGUB, BIOEN, BIGTK) devam eğilimi: 10 günde tekrar %48; ızlı tavanlar (BEGYO, INFO, DCTTR) halkaya satış imzalı: boşaltım riski %43 &rarr; kovalanmaz. SANEL/GEREL "tahtacı oyunu": sabah hacim teyidi + stop şart.</div>
+<div class="warn"><b>KURAL HATIRLATMA (sitenizin kendi disiplini):</b> TAVAN GÜNÜ GİRİLMEZ. BOSALTIM kartı = elindekiler için çıkış. Tek pozisyon &le;%5, gün içi -%2 realized zarar &rarr; gün biter. Medyan işlem KAYIPTIR; kazanç sağ kuyruktan gelir. Bu bölüm 26.10 seansına özel bir anlık görüntüdür &mdash; BIST_Radar.py her taramada güncellemelidir (bkz. EK). Eğitim amaçlıdır, yatırım tavsiyesi değildir.</div>
+
+<h3 style="color:#16C784">8. OLASILIK FORMAL&Idot;ZASYONLARI (F1&ndash;F5, 26.10.2026 &ouml;l&ccedil;&uuml;mleriyle kalibre)</h3>
+<div class="card"><b>F1 &mdash; HAWKES &Ouml;ZYARINDIRICI S&Uuml;RE&Ccedil;: "halka &ccedil;arpan&imath;" &eta; = 0,71</b><br>
+<code>&lambda;(t) = &mu; + &Sigma; &alpha;&middot;e<sup>&minus;&beta;(t&minus;t&#7522;)</sup> &nbsp;&middot;&nbsp; dal&imath;&scedil;ma oran&imath; &eta; = &alpha;/&beta;</code><br>
+G&uuml;nl&uuml;k tavan say&imath;m&imath;n&imath;n Fano oran&imath;: Var/E = <b>3,47</b> &rarr; sabit &ouml;zelikte Hawkes i&ccedil;in <code>&eta; = 1 &minus; 1/Fano</code> = <b>0,71</b>. Kararl&imath;l&imath;k &ccedil;arp&imath;c&imath;: 2025 &eta;=0,705, 2026 &eta;=0,706 &mdash; iki y&imath;l neredeyse ayn&imath;. Okuma: <b>her 100 tavan&imath;n &asymp;71'i &ouml;nceki tavanlar&imath;n tetikledi&gbreve;i kopyalar, &asymp;29'u arka plan (spontan ba&scedil;lang&imath;&ccedil;)</b>. &eta;&lt;1 = alt-kritik: patlamalar kendini s&ouml;nd&uuml;r&uuml;r, s&ouml;n&uuml;m &ccedil;&uuml;r&uuml;mesini Hawkes modelinizdeki "tekrar medyan&imath; 8 g&uuml;n" davran&imath;&scedil;&imath; a&ccedil;&imath;klar. Haf&imath;za: oto-korelasyon d&ouml;&uuml;&scedil;&uuml;&scedil;&uuml;nden &tau; &asymp; 3 i&scedil; g&uuml;n&uuml;. Uyar&imath;: Fano rejim varyans&imath;n&imath; da i&ccedil;erir &rarr; &eta; bir &uuml;st s&imath;n&imath;r; kesin de&gbreve;er olay zamanlar&imath;ndan ML uydurma ister.</div>
+<div class="card"><b>F2 &mdash; SER&Idot; TEHL&Idot;KE E&GBreve;R&Idot;S&Idot;: her tavan bir sonrakini besliyor</b><br>
+<code>h(n) = P(seri n+1'e uzar | n tavan)</code><br>
+&Ouml;l&ccedil;&uuml;m (4175 seri): h(1)=<b>0,33</b> &rarr; h(2)=<b>0,48</b> &rarr; h(3)=<b>0,52</b> &rarr; h(4)=<b>0,61</b> &rarr; h(5)=<b>0,69</b> &rarr; h(7)=<b>0,74</b>. Sabit-h geometrik null <b>reddedilir</b>: 1. tavan&imath; atan hissenin devam &scedil;ans&imath; %33 iken, 4. tavana gelmi&scedil; hissenin devam &scedil;ans&imath; %61'e &ccedil;&imath;k&imath;yor &mdash; bu, pompalaman&imath;n (T2 y&uuml;kseltme faz&imath;n&imath;n) matematiksel imzas&imath;d&imath;r ve "s&imath;cak tahta" sezgisinin nicel kar&scedil;&imath;l&imath;&gbreve;&imath;d&imath;r. Birim&imath;z: seri uzunlu&gbreve;u da&gbreve;&imath;l&imath;m&imath; haf&imath;zas&imath;z de&gbreve;il &mdash; ucu gitgide a&gbreve;&imath;rla&scedil;an bir peki&scedil;tirmeli s&uuml;re&ccedil;.</div>
+<div class="card"><b>F3 &mdash; YEN&Idot;LEME S&Uuml;REC&Idot;: ritim metronom de&gbreve;il, haf&imath;zas&imath;z</b><br>
+<code>P(bekleme &le; t) &asymp; 1 &minus; e<sup>&minus;&lambda;t</sup>, &lambda; &asymp; 1/42 i&scedil; g&uuml;n&uuml;</code><br>
+3600 ge&ccedil;i&scedil;: ort 41,9 | medyan 25 | CV = <b>1,10</b> (&uuml;stel i&ccedil;in 1,00) | ort/medyan = 1,68 (&uuml;stel i&ccedil;in 1,693). KS = 0,133 &gt; 0,023 &rarr; tam &uuml;stel de&gbreve;il (orta b&ouml;lgede hafif fazlal&imath;k: P&le;30: %57 vs %51) ama CV&asymp;1: <b>"&asymp;6 haftal&imath;k ritim" sabit periyodik d&ouml;ng&uuml; DE&Gbreve;L&Idot;</b> &mdash; sabit oranl&imath; rastgele f&imath;rsat var&imath;&scedil;&imath;. Yorum: birikim tamamlanmas&imath; + rejim uygunlu&gbreve;unun ba&gbreve;&imath;ms&imath;z denemeler gibi davranmas&imath; &uuml;stel bekleme &uuml;retir; takvimle "her 6 haftada bir tavan beklerim" diyen yanl&imath;&scedil; olur, "her hafta &asymp;%2,4 ihtimalle yeniden ba&scedil;lar" diyen do&gbreve;ru.</div>
+<div class="card"><b>F4 &mdash; KELLY KR&Idot;TER&Idot;: %5 pozisyon kural&imath;n&imath;n gerek&ccedil;esi</b><br>
+<code>f* = (p(b+1) &minus; 1)/b, &nbsp; b = hedef/stop = 8/3 &asymp; 2,67</code><br>
+p=%46 (izgara, 313 i&scedil;lem): full Kelly %25,8 &rarr; <b>&ccedil;eyrek Kelly %6,4 &asymp; sizin %5 kural&imath;n&imath;z</b>. p=%40 (karne): &ccedil;eyrek %4,4. &rarr; %5 kural&imath; matematiksel olarak sa&gbreve;lam: isabet tahmini optimist olsa bile pozisyon boyutu korunur, tam Kelly'nin volatilite tuza&gbreve;&imath;na d&uuml;&scedil;m&uuml;yorsunuz.</div>
+<div class="card"><b>F5 &mdash; KARNE BAYES: n=5 neden kan&imath;t de&gbreve;il</b><br>
+<code>p | karne &sim; Beta(k+1, n&minus;k+1) = Beta(3,4)</code><br>
+2/5 isabet ile ger&ccedil;ek isabet oran&imath;n&imath;n %95 g&uuml;ven aral&imath;&gbreve;&imath; <b>[%12, %78]</b>. Yani canl&imath; karne &scedil;u an modelin %36's&imath;ndan iyi mi k&ouml;t&uuml; m&uuml; oldu&gbreve;unu <i>matematiksel olarak</i> ay&imath;rt edemez; n&asymp;50'ye ula&scedil;madan karne h&uuml;k&uuml;m vermez &mdash; sitenizdeki "bekleyen 33 karar" sat&imath;r&imath;n&imath;n nicel gerek&ccedil;esi budur.</div>
+<div class="warn"><b>FORMAL&Idot;ZASYON KARARI:</b> Fenomen &uuml;&ccedil; standart stokastik nesneye indirgendi: <b>(1) pazar d&uuml;zeyinde &ouml;zyar&imath;nd&imath;r&imath;c&imath; nokta s&uuml;reci (&eta;&asymp;0,71), (2) hisse d&uuml;zeyinde artan tehlikeli peki&scedil;tirmeli seri s&uuml;reci (h: 0,33&rarr;0,74), (3) haf&imath;zas&imath;z yenileme s&uuml;reci (CV&asymp;1,10)</b>. Bu &uuml;&ccedil;l&uuml; "gizemli bir makine" de&gbreve;il, ders kitab&imath; nesneleri: tahtac&imath; davran&imath;&scedil;&imath;n&imath;n matematiksel &ccedil;&imath;plak&imath; budur. Ek: D2'nin 49 kal&imath;c&imath; kenar bulgusunun p-de&gbreve;eri <b>4,3&times;10<sup>&minus;11</sup></b> (rastgelede 16 beklenirdi) &mdash; kenar alt k&uuml;mesinin rastgele olmadan eminiz; ger&ccedil;ek &ccedil;evre aday&imath; tam olarak bu k&uuml;me.</div>
+
+<details><summary>EK &mdash; şablon kullanımı ve besleme notu (tıkla açılır)</summary>
+<div class="note">Bu dosya tek başına statiktir; <code>BIST_Radar.py</code> her taramada şu işaretli blokları güncelleyebilir:<br>
+&nbsp;&nbsp;H1 grafiği: <code>&lt;g&gt;</code> içindeki 8 <code>&lt;rect&gt;</code> + değer <code>&lt;text&gt;</code> blokları &middot; özet kutusu &middot; P-tablosu durum hücreleri &middot; D1&ndash;D4 ölçüm satırları &middot; <b>Bölüm 7 (tavan adayları): model sıralaması, zincir kenarları, Hawkes beklentisi &mdash; her seans öncesi yenilenmeli</b>.<br>
+Loglanacak yeni seriler: günlük tavan sayısı, günlük <b>taban</b> sayısı (P7/D3), relvol&lt;1,5 tavan payı (D1), yıl1/yıl2 kenar tabloları (D2), tavan+taban birleşik lig (D4). Karne mantığı (5 gün sonra gerçekleşen sonuçla işaretle) aynen uygulanır.</div>
+</details>
+
+<div class="foot">Örnek sayfa &middot; H1 bölümü 25.10.2026'da radar.py metodolojisiyle tam evrenden (629 hisse, Yahoo 2y, ret&ge;%9,5) yeniden ölçüldü; Ekim 2026 günlük sayıları sitenin TV tabanlı ölçümüyle çapraz doğrulandı &middot; Yahoo verisi küçük hisselerde bozuk bar içerebilir (radar.py'nin kendi limiti) &middot; eğitim amaçlıdır, yatırım tavsiyesi değildir.</div>
+</body></html>
