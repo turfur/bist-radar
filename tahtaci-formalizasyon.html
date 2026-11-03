@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SALI 03.11.2026 — Tavan Adayları</title><style>
-body{background:#0B0E14;color:#e8ecf1;font-family:system-ui;margin:0;padding:12px;max-width:900px;margin:0 auto}
-h2{margin:6px 0}.sub{color:#8892a0;font-size:13px;margin-bottom:12px}
+<title>ÇARŞAMBA 04.11.2026 — Tavan Adayları + Formalizasyon Hesapları</title><style>
+body{background:#0B0E14;color:#e8ecf1;font-family:system-ui;margin:0;padding:12px;max-width:960px;margin:0 auto}
+h2{margin:6px 0}h3{margin:14px 0 6px;color:#F3BA2F}.sub{color:#8892a0;font-size:13px;margin-bottom:12px}
 .card{background:#131926;border:1px solid #232c3d;border-radius:12px;padding:12px;margin:10px 0}
 .warn{background:#2a2113;border:1px solid #8a6d2f;border-radius:10px;padding:10px;font-size:14px;margin:12px 0}
 .note{background:#131926;border:1px solid #2c3a55;border-radius:10px;padding:10px;font-size:13px;margin:12px 0}
@@ -19,46 +19,95 @@ td.v{font-family:ui-monospace,monospace}
 .k{color:#16C784;font-weight:700}.r{color:#EA3943;font-weight:700}.y{color:#F3BA2F;font-weight:700}
 .foot{color:#8892a0;font-size:12px;margin-top:14px;border-top:1px solid #232c3d;padding-top:8px}
 </style></head><body>
-<h2>SALI 03.11.2026 — TAVAN ADAYLARI</h2>
-<div class="sub">BIST Radar · veri: 02.11.2026 Pazartesi kapanışı (23:52 taraması, Midas çapraz) · eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
+<h2>ÇARŞAMBA 04.11.2026 — TAVAN ADAYLARI + FORMALİZASYON HESAPLARI</h2>
+<div class="sub">BIST Radar · veri: 03.11.2026 Salı kapanışı (23:40 taraması, Midas çapraz 94/94 ✓) · diğer yapay zekanın F1-F8 formalizasyonu bugünün verisiyle yeniden hesaplandı · eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
 
-<div class="warn"><b>ANA KURAL:</b> <b>RADARDA sinyali 0 → işlem beklentisi 0.</b> Sinyal açılmazsa hiç işlem yapılmaz; aşağıdaki İZLE kartları sadece sabah hacim teyidi (relvol≥2) gelirse açılır. Pozisyon ≤%5, gün içi −%2 realized → gün biter.</div>
+<div class="warn"><b>ANA KURAL: RADARDA sinyali 3 → beklenti 5.6 (3 işlem × +1.86).</b> Sinyal kapanışta girilir; pozisyon ≤%5, gün içi −%2 realized → gün biter. Sinyal açılmazsa hiç işlem yapılmaz. Tavan günü girilmez.</div>
 
-<div class="card"><b class="y">İZLE — izgara işlem adayı (sadece hacim teyidiyle, tavan avı değil):</b><br>
+<h3>RADARDA — izgara sinyali (3 isim, kapanışta giriş)</h3>
+<div class="card">
 <table>
-<tr><th>Kod</th><th>02.11</th><th>relvol</th><th>Giriş</th><th>Stop</th><th>Hedef</th></tr>
-<tr><td class="v">DERIM</td><td>+6,64%</td><td>3,87</td><td>19,75</td><td>19,16</td><td>21,33</td></tr>
-<tr><td class="v">ATAKP</td><td>+5,71%</td><td>1,68</td><td>37,00</td><td>35,89</td><td>39,96</td></tr>
+<tr><th>Kod</th><th>03.11</th><th>Sinyal</th><th>Giriş</th><th>Stop</th><th>Hedef</th><th>relvol</th></tr>
+<tr><td class="v">KIMMR</td><td>+8,54%</td><td>S1+S4+S5+S6+S7</td><td>10,55</td><td>10,23</td><td>11,39</td><td><b>6,72</b></td></tr>
+<tr><td class="v">QNBFK</td><td>+6,06%</td><td>S4+S5+S6</td><td>39,20</td><td>38,02</td><td>42,34</td><td>2,03</td></tr>
+<tr><td class="v">BURVA</td><td>+8,27%</td><td>S4+S5+S6+S7</td><td>244,90</td><td>237,55</td><td>264,49</td><td>1,99</td></tr>
 </table>
-<span class="leg">DERIM tek güçlü iz: S1+S4+S7, relvol 3,87 — sabah teyidi gelirse. ATAKP zayıf (rv 1,68). Dünün izgara adayları TURSG (+0,61) / NETCD (−1,48) teyitsiz kaldı, girilmedi — doğru karar. Dünün model adayı SKYLP ise TABANA çakıldı (−9,96): relvol teyidi olmasa girilecekti, kural −%10 felaketini önledi.</span></div>
+<span class="leg">Üçü de 03.11'de tavan atmadı (yasaklı değil) — kurallara uygun tek açılış tablosu. KIMMR tek güçlü (rv 6,72, 5 sinyal). Sabah teyidi gelmezse o isim atlanır.</span></div>
 
-<div class="card"><b>ADAY — model listesi (GİRİŞ DEĞİLDIR, izleme):</b><br>
-<span class="chip mid">KARTN 114,9 (+6,00)</span><span class="chip mid">KENT 255,0 (+6,25)</span>
-<div class="leg">İkisi de relvol 1,49 — sabah teyitsiz giriş yok; "12'de 11'i boş" notuyla sadece açılışta hacim patlarsa izlenir. KARTN ayrıca zincir hedefi: PRZMA→KARTN x3,2 ve KONTR→KARTN x3,1 kenarları bugünkü tavanlardan çıktı — model + zincir örtüşmesi tek not edilecek şey.</div></div>
+<h3>İZLE — hacim teyidiyle (relvol ≥2, tavan avı değil)</h3>
+<div class="card">
+<table>
+<tr><th>Kod</th><th>03.11</th><th>Giriş</th><th>Stop</th><th>Hedef</th><th>relvol</th></tr>
+<tr><td class="v">SEGYO</td><td>+6,37%</td><td>2,17</td><td>2,10</td><td>2,34</td><td>3,62</td></tr>
+<tr><td class="v">AGHOL</td><td>+8,64%</td><td>27,40</td><td>26,58</td><td>29,59</td><td>3,07</td></tr>
+<tr><td class="v">KBORU</td><td>+4,56%</td><td>9,17</td><td>8,89</td><td>9,90</td><td>2,39</td></tr>
+<tr><td class="v">HATSN</td><td>+3,87%</td><td>21,48</td><td>20,84</td><td>23,20</td><td>1,80</td></tr>
+<tr><td class="v">RYSAS</td><td>+9,26%</td><td>27,84</td><td>27,00</td><td>30,07</td><td>1,63</td></tr>
+<tr><td class="v">MASFN</td><td>−0,86%</td><td colspan="3">giriş yok — rv yok, sadece gözlem</td><td>—</td></tr>
+</table>
+<span class="leg">Ayrıca GUBRF yedek iz (−0,91, rv 1,46). Dünün izleri DERIM (+4,91, hedef tutmadı) ve ATAKP teyitsiz kaldı — ikisi de girilmedi, kayıp yok.</span></div>
 
-<div class="card"><b class="r">YASAK — 02.11'de tavan attı, TAVAN GÜNÜ GİRİLMEZ (26 isim):</b><br>
-<span class="chip bad">BRKVY</span><span class="chip bad">BRMEN</span><span class="chip bad">BURCE</span><span class="chip bad">BURVA</span><span class="chip bad">CASA</span><span class="chip bad">DOGUB</span><span class="chip bad">EFOR</span><span class="chip bad">ETILR</span><span class="chip bad">EUHOL</span><span class="chip bad">GUBRF</span><span class="chip bad">HATSN</span><span class="chip bad">HRKET</span><span class="chip bad">ISKPL</span><span class="chip bad">IZFAS</span><span class="chip bad">KARCL</span><span class="chip bad">KBORU</span><span class="chip bad">KIMMR</span><span class="chip bad">KONTR</span><span class="chip bad">MASFN</span><span class="chip bad">MCARD</span><span class="chip bad">PRZMA</span><span class="chip bad">QNBFK</span><span class="chip bad">QNBTR</span><span class="chip bad">SARKY</span><span class="chip bad">SVGYO</span><span class="chip bad">TGSAS</span>
-<div class="leg">Lojistik modelin yarın için ilk 10'u da bu isimlerden (PRZMA %7, diğerleri %6) — ama kural değişmez: tavan günü girilmez, sadece seri/tekrar takibi izlenir.</div></div>
+<h3>ADAY — model listesi (GİRİŞ DEĞİLDIR, izleme)</h3>
+<div class="card">
+<span class="chip mid">NETCD 93,10 (+7,75) rv 2,15</span><span class="chip mid">GEDIK 5,05 (+3,06) rv 2,09</span><span class="chip mid">VBTYZ 20,60 (+4,57) rv 1,82</span>
+<div class="leg">Üçü de L1+L2+L4. NETCD dünün iz adayıydı (02.11'de −1,48 teyitsiz → girilmedi), bugün +7,75 ile modelde — teyit kuralı değişmedi: rv ≥2 sabah teyidi olmadan giriş yok.</div></div>
 
-<div class="card"><b>YENİ TAHTACI TARAMASI (02.11):</b> bugünün 26 tavanının <b>25'i köklü TAHTACI, 1'i TEK (MASFN)</b> → <b>yeni tahtacı doğmadı</b> (eski pencere temiz + son 60 günde tekrar: 0 isim).<br><br>
-<b>ERKEN UYARI — 14 isim kontrol almaya başladı (son 60 günde tekrar, eski pencere temiz):</b><br>
+<h3>YASAK — 03.11'de tavan attı, TAVAN GÜNÜ GİRİLMEZ (44 isim)</h3>
+<div class="card">
+<span class="chip bad">A1CAP</span><span class="chip bad">AKHAN</span><span class="chip bad">AKSUE</span><span class="chip bad">ATSYH</span><span class="chip bad">AVGYO</span><span class="chip bad">BAHKM</span><span class="chip bad">BMSTL</span><span class="chip bad">BRKO</span><span class="chip bad">BRKVY</span><span class="chip bad">BRLSM</span><span class="chip bad">BRMEN</span><span class="chip bad">BSOKE</span><span class="chip bad">CATES</span><span class="chip bad">DOGUB</span><span class="chip bad">EGEPO</span><span class="chip bad">ENPRA</span><span class="chip bad">ENSRI</span><span class="chip bad">ESCAR</span><span class="chip bad">GENIL</span><span class="chip bad">GZNMI</span><span class="chip bad">IDGYO</span><span class="chip bad">ISBIR</span><span class="chip bad">KARTN</span><span class="chip bad">KLSER</span><span class="chip bad">KONTR</span><span class="chip bad">KRPLS</span><span class="chip bad">KTLEV</span><span class="chip bad">MEPET</span><span class="chip bad">OBASE</span><span class="chip bad">OZGYO</span><span class="chip bad">OZSUB</span><span class="chip bad">PAMEL</span><span class="chip bad">PKART</span><span class="chip bad">PRZMA</span><span class="chip bad">PSGYO</span><span class="chip bad">QNBTR</span><span class="chip bad">RODRG</span><span class="chip bad">SEGMN</span><span class="chip bad">SKTAS</span><span class="chip bad">VESBE</span><span class="chip bad">VESTL</span><span class="chip bad">YIGIT</span><span class="chip bad">YYLGD</span><span class="chip bad">ZOREN</span>
+<div class="leg">44 tavanın 39'u kartta TAVAN-GUNU durumunda; ayrıca 33 BOSALTIM kartı açık (elindekiler için çıkış). Lojistik modelin 04.11 ilk 10'u da bu isimlerden (KTLEV/VESTL/GZNMI %8, diğerleri %7) — kural değişmez: tavan günü girilmez.</div></div>
+
+<h3>FORMALİZASYON HESAPLARI — diğer yapay zekanın F1-F8 sistemi, 03.11 verisiyle yeniden hesaplandı</h3>
+<div class="note"><b> dürüstlük notu:</b> diğer yapay zeka 30.10'da kapandı (free kota); bu hesaplar artık <b>BIST_Radar tarafından</b> aynı metodolojiyle üretiliyor — yani "iki bağımsız model çaprazlaması" artık <b>tek kaynak</b>. Bağımsızlık kaybı sayfada görünür tutulur.</div>
+<div class="card">
+<table>
+<tr><th>Hesap</th><th>Kaynak</th><th>03.11 sonucu</th><th>Durum</th></tr>
+<tr><td class="v">F1 Hawkes η (Fano)</td><td>kendi 454 günlük sayım + taze html</td><td>Fano 3,47 → <b>η = 0,71</b> (taze: 3,49 → 0,71)</td><td><span class="chip ok">ÇAPRAZ</span> — onların bağımsız Fano tahmini de 0,71</td></tr>
+<tr><td class="v">F2/F7 seri hazard h(n)</td><td>4175 seri (25.10) + kendi 1y (taze)</td><td>h(1)=0,33 → h(7)=<b>0,74</b> artan · kendi 1y: 0,22 → 0,69</td><td><span class="chip ok">ÇAPRAZ</span> — iki seri de artan tehlike, yön aynı</td></tr>
+<tr><td class="v">F3 yenileme (üstel mi)</td><td>3600 gap (25.10)</td><td>ort 41,9g · medyan 25g · <b>CV = 1,10</b> (üstel = 1,00)</td><td><span class="chip mid">KISMEN</span> — KS 0,133 &gt; 0,023 → %5'te RED; şekil üstele yakın</td></tr>
+<tr><td class="v">F4 Kelly</td><td>b = +8/−3</td><td>izgara p=%46 → çeyrek <b>%6,4</b> · karne p=%37 → çeyrek %3,4</td><td><span class="chip ok">ÇAPRAZ</span> — %5 kuralı çeyrek Kelly bandında</td></tr>
+<tr><td class="v">F5 karne Beta</td><td>karnes.csv 16/43</td><td><b>Beta(17,28)</b> ort %37,8 · %95 <b>[%24,4 – %52,2]</b></td><td><span class="chip mid">GÜNCELLENDİ</span> — eski Beta(3,4) / Beta(11,24) geçersiz; hüküm n≈50'de</td></tr>
+<tr><td class="v">F6 INGARCH(1,1)</td><td>kendi grid-uydurma</td><td>w=4,22 a=0,25 b=0,50 → 04.11: <b>24,3 tavan</b>, Poisson <b>[%15 – %37]</b></td><td><span class="chip mid">beklenti</span></td></tr>
+<tr><td class="v">F8 bayram çarpanı</td><td>5/5 bağımsız test ×1,49</td><td>04.11 bayram değil → <b>×1,0</b> · 6. örnek grev karneye yazıldı</td><td><span class="chip ok">pasif</span></td></tr>
+<tr><td class="v">D2 anlamlılık</td><td>Poisson kuyruk</td><td>P(X≥44 │ λ=18,0) = <b>1,6·10⁻⁷</b></td><td><span class="chip bad">03.11 BANT DIŞI</span></td></tr>
+<tr><td class="v">D1 kilitli pay</td><td>kendi 1y</td><td>tüm dönem %42 (1600/3775) · son 30 bar <b>%59</b> (375/631)</td><td><span class="chip ok">kilitli devam</span></td></tr>
+<tr><td class="v">D4 çift yönlü</td><td>kendi 1y</td><td>tavan-taban korelasyonu <b>+0,60</b></td><td><span class="chip mid">uyarı</span> — yükselen hızlı düşer</td></tr>
+</table></div>
+
+<div class="warn"><b>SAYI GREVLERİ (F6 rejim testi) — üst üste 2 gün bant dışı:</b><br>
+02.11: INGARCH 14,7 <b>[8–25]</b> → gerçekleşen <b>26</b> (P=4,8·10⁻³) · 03.11: INGARCH 18,0 <b>[10–29]</b> → gerçekleşen <b>44</b> (P=1,6·10⁻⁷)<br>
+<b>04.11 beklentisi:</b> Hawkes ~24,6 · INGARCH 24,3 <b>[%15–%37]</b> · DURUM <b>YÜKSEK</b><br>
+<span class="leg">Ders: rejim ısınıyor (26 → 44) ve λ tek başına yetmiyor; iki grev kalibrasyon malzemesi (F8 ×1,35 taslağı v1.0 paketinde yeniden görülecek). η=0,71 ve D1 kilitli %59 aynı yönde: kilitli tavan rejimi sürüyor.</span></div>
+
+<h3>YENİ TAHTACI TARAMASI (03.11, 44 tavan)</h3>
+<div class="card">
+<b>44 tavanın profili: 40 TAHTACI + 4 TEK</b> (EGEPO · YIGIT · YYLGD · ZOREN) → <b>yeni tahtacı doğmadı</b> (eski pencere temiz + son 60 günde tekrar: 0 isim). 39'u köklü — bugünün avı da köklü isimlerden.<br><br>
+<b>ERKEN UYARI — 14 isim kontrol altında (dün de aynı liste, 0/14 tavan):</b><br>
 <span class="chip mid">BJKAS 9t/60g</span><span class="chip mid">MRGYO 9</span><span class="chip mid">BEGYO 8</span><span class="chip mid">UNLU 7</span><span class="chip mid">ALBTN 5</span><span class="chip mid">EKIM 4</span><span class="chip mid">KRGYO 4</span><span class="chip">KRTEK 3</span><span class="chip">KZGYO 3</span><span class="chip">METEN 3</span><span class="chip">MZHLD 3</span><span class="chip">OTKAR 3</span><span class="chip">PETKM 3</span><span class="chip">VRGYO 3</span>
-<div class="leg">Kümelenme: 14'ün 5'i GYO (MRGYO · BEGYO · KRGYO · KZGYO · VRGYO) → yeni grup GYO tahtasında ısınıyor; fiyat bandı medyan 6,4 TL (penny ağırlıklı). Bunlar izleme listesi — giriş sinyali değil.</div></div>
+<div class="leg">Kümelenme: 14'ün 5'i GYO (MRGYO · BEGYO · KRGYO · KZGYO · VRGYO) → GYO tahtası ısınıyor; fiyat medyanı 6,6 TL. İzleme listesi — giriş sinyali değil.</div><br>
+<b>YASAK DIŞI KÖKLÜ (otomatik ban adayı, 35 isim):</b> A1CAP · AKHAN · AKSUE · ATSYH · AVGYO · BAHKM · BMSTL · BRKO · BRKVY · BRLSM · BSOKE · CATES · ENSRI · ESCAR · GENIL · GZNMI · IDGYO · ISBIR · KARTN · KLSER · KRPLS · KTLEV · MEPET · OBASE · OZGYO · OZSUB · PAMEL · PKART · PRZMA · PSGYO · RODRG · SEGMN · SKTAS · VESBE · VESTL — bugün tavan attıkları için yarın zaten yasaklı; 05.11'de devam izlemeye alınır.</div>
 
-<div class="card"><b>YASAK DIŞI KÖKLÜ (otomatik ban adayı, 17 isim):</b> KARCL (60 günde 14 tavan!) · IZFAS 12 · TGSAS 12 · PRZMA 10 · HATSN · MCARD · EFOR · KBORU · ETILR · HRKET · BRKVY · QNBFK · CASA · KIMMR · SARKY · ISKPL · SVGYO — bugün tavan attıkları için yarın zaten yasaklı; 04.11'de devam izlemeye alınır.<br><br>
-<b>YENİ ALIM YOK:</b> 33 BOSALTIM kartı (DOAS −9,99 · PATEK −9,89 · LIDER −9,96 · TMPOL −10 · HEDEF −9,91 ...) — elindekiler için çıkış.<br><br>
-<b>SAYI:</b> bugün 26 tavan → Hawkes ~18,5 · INGARCH 18,0 [10–29] — <b>DURUM YÜKSEK</b> (yoğunluk devam ediyor). <b>KARNE:</b> %34 (n=38), bekleyen 25; 30.10 top-5'in beşi de bugün tavana yazıldı; 02.11 top-5 (HRKET ISKPL PRZMA SARKY SVGYO) yazıldı, çözüm 5 işlem gününde.</div>
-
-<div class="card"><b>ADAY KARSILASTIRMA — lojistik vs F7 hazard:</b><br>
+<h3>03.11 SKORU — "nasılız kaç bildik"</h3>
+<div class="card">
 <table>
-<tr><th>#</th><th>Lojistik</th><th>P</th><th>F7 hazard</th><th>Durum</th></tr>
-<tr><td class="v">1</td><td>PRZMA</td><td>%7</td><td>0,22</td><td>seri 1</td></tr>
-<tr><td class="v">2</td><td>SARKY</td><td>%6</td><td>0,22</td><td>seri 1</td></tr>
-<tr><td class="v">3</td><td>SVGYO</td><td>%6</td><td>0,22</td><td>seri 1</td></tr>
-<tr><td class="v">7</td><td>DOGUB</td><td>%6</td><td><b>0,44</b></td><td>seri 6</td></tr>
-<tr><td class="v">9</td><td>BURVA</td><td>%6</td><td>0,28</td><td>seri 2</td></tr>
-</table>
-<span class="leg">F7 seri uzunluğunu öne alır: DOGUB 6'lı seriyle hazard lideri (0,44), lojistik ise taze tavanları. İki sıra farklı — günün skorunu karne belirler. Midas çapraz: kendi tespit 26 = Midas en-çok-artan 26 (birebir); Midas tum-hisseler sayfası bazı tavanlarda düşük gösteriyor (26 vs 16) — kendi sayımımızla aynı, Midas'ın kendi sayfaları arasında ayrışma, araştırılıyor.</span></div>
+<tr><th>Kalem</th><th>Sonuç</th></tr>
+<tr><td>Sayısı</td><td class="r">44 vs beklenti 18 [10–29] → TUTMADI (üst üste 2. grev)</td></tr>
+<tr><td>Midas çapraz</td><td class="k">44 = 44 birebir ✓</td></tr>
+<tr><td>Lojistik 03.11 top-10</td><td>2/10 (PRZMA %9,99 · DOGUB %9,95)</td></tr>
+<tr><td>Karne 02.11 top-5</td><td>1/5 (sadece PRZMA)</td></tr>
+<tr><td>ADAY KARTN (02.11)</td><td class="k">✓ TAVAN %9,92 — ama teyitsiz girilmedi (rv 1,49)</td></tr>
+<tr><td>İZLE DERIM (02.11)</td><td>+4,91 — hedef 21,33 tutmadı, giriş yok, kayıp yok</td></tr>
+<tr><td>ISKPL (yasaklıydı)</td><td class="k">−9,39 BOSALTIM → çakıldı, yasak kurtardı</td></tr>
+<tr><td>03.11 işlem</td><td>RADARDA 0 → <b>0 işlem</b> (doğru karar — sinyal yok)</td></tr>
+<tr><td>Yeni tahtacı</td><td>0 (44'ün 40'ı köklü) · Erken uyarı 0/14</td></tr>
+</table></div>
 
-<div class="foot">Kaynak: BIST_Radar.py (turfur.github.io/bist-radar) · geçmiş bölümler arşivde: git geçmişi · eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
+<h3>KARNE + ADAY KARŞILAŞTIRMA</h3>
+<div class="card">
+<b>KARNE:</b> <b>%37</b> (n=43, Beta(17,28) %95 [%24,4–%52,2]) · bekleyen 25 · hüküm n≈50'de.<br>
+Son kararlar: <span class="chip ok">KAPLM TAVAN</span><span class="chip ok">IZFAS TAVAN</span><span class="chip ok">ASTOR TAVAN</span><span class="chip ok">SANEL TAVAN</span><span class="chip">EUPWR yok</span><span class="chip">EPLAS yok</span><br>
+03.11 top-5 yazıldı: <span class="chip mid">GENIL</span><span class="chip mid">GZNMI</span><span class="chip mid">KTLEV</span><span class="chip mid">RODRG</span><span class="chip mid">VESTL</span> — beşi de 03.11'de tavana yazıldı; <b>retrodict notu:</b> pencere başlangıcı D mi D+1 mi v1.0'da netleştirilecek, şimdilik "bekliyor".<br><br>
+<b>ADAY KARŞILAŞTIRMA — lojistik vs F7 hazard:</b> 04.11 lojistik ilk 10'u (KTLEV/VESTL/GZNMI %8, GENIL/RODRG/CATES/ESCAR/PSGYO/A1CAP/BAHKM %7) <b>hepsi seri 1 → hazard 0,22</b>; kontrast: <b>DOGUB seri 7 → hazard 0,74</b> (4175 seri) ama tavan günü, giriş yok. F7 uzun seriyi, lojistik taze tavanı öne alır — günün skorunu karne belirler (03.11: lojistik 2/10, karne 1/5).</div>
+
+<div class="foot">Kaynak: BIST_Radar.py + _formalizasyon.py (turfur.github.io/bist-radar) · formalizasyon hesapları 03.11.2026 verisiyle yeniden hesaplandı · ölçülmüş hata, sıfır kayıp vaat edilmez · eğitim amaçlıdır, yatırım tavsiyesi değildir</div>
 </body></html>
