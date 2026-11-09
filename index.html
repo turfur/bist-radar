@@ -32,6 +32,21 @@ details.arsiv summary{cursor:pointer;color:#8892a0;font-size:14px;padding:6px 0}
 <div class="sub">Taranan: 625 hisse | 10.11.2026 00:47 | gecen yil: ~250 sinyal, ~%45 isabet</div>
 <div class="sub">ORTAK URETIM: olcum ve kod BIST_Radar.py | formalizasyon: <a href="tahtaci-formalizasyon.html" style="color:#F3BA2F">TAHTACI FORMALIZASYON - TT-Dongu, olasilik modeli, gunluk aday bolumu</a> | iki yapay zekanin birlikte calismasi: biri veriyi ve sinyali olcer, digeri modeli ve testleri kurar.</div>
 <div class="card"><div class="h"><b>TAVAN ADAYLARI - TEK MODEL</b><span class="d" style="color:#F3BA2F">10.11 SALI</span></div><div class="leg"><b style="color:#4A9EFF">BIST Radar lojistik:</b> <span class="chip hot">UFUK %8</span><span class="chip hot">EDATA %7</span><span class="chip hot">ECOGR %7</span><span class="chip hot">MANAS %7</span><span class="chip hot">ALKLC %7</span><span class="chip hot">BIGEN %7</span><span class="chip hot">ANELE %7</span><span class="chip hot">BRMEN %7</span><span class="chip hot">GUNDG %7</span><span class="chip hot">OZRDN %7</span></div><div class="t">DIGER YAPAY ZEKA KAPANDI: 30.10 itibariyle uretimi durdu (free kota bitti). Son doneminde listesi bu modelin kopyasiydi (kanit: 28.10 22:52 push sonrasi 22:55 commit, walk-forward metrikleri birebir ayni). Bagimsiz calistigi donem (27.10 ve oncesi) arsivde: tahtaci-formalizasyon.html. Model listesi GIRIS listesi degildir; tavan gunu girilmez.</div></div>
+<div class="card"><div class="h"><b>RADARDA - SALI 10.11 (kapanista gir)</b><span class="d" style="color:#F3BA2F">2 GIRIS - KAYNAK: 09.11 PAZARTESI TARAMASI</span></div>
+<table>
+<tr><th>Kod</th><th>09.11 Pzt</th><th>Sinyal</th><th>Giris</th><th>Stop</th><th>Hedef</th><th>rv (Pzt)</th></tr>
+<tr><td class="v"><b>OYAYO</b></td><td>+9,24%</td><td>S3+S4+S5+S6+S7</td><td>33,34</td><td>32,34</td><td>36,01</td><td>1,68</td></tr>
+<tr><td class="v"><b>ARDYZ</b></td><td>+6,16%</td><td>S4+S5+S6+S7</td><td>62,00</td><td>60,14</td><td>66,96</td><td>1,51</td></tr>
+</table>
+<div class="leg">Iki kart da Dusuk rv ile geldi (1,68 / 1,51) — <b>sabah 10:00 teyidi (relvol &gt;=2) gelmezse o isim ATLANIR</b>; teyit bitmeden giris listesi yok. BIST 18:00'da kapanir, 18:30 tarama yok. MODEL top-10 (ustteki blok) tamamı Pazartesi tavani -> YASAK-42 icinde, giris listesi degil.</div></div>
+<div class="card"><div class="h"><b>PAZARTESI 09.11 SONUC KARNESI - RADARDA (sinyal: 06.11 Cuma kapanisi)</b><span class="d" style="color:#16C784">1 HEDEF / 1 STOP / 1 CIKIS</span></div>
+<table>
+<tr><th>Kod</th><th>Cuma giris</th><th>Pazartesi</th><th>Sonuc</th></tr>
+<tr><td class="v"><b>ATSYH</b></td><td>80,00</td><td>87,95 (+9,94 TAVAN)</td><td style="color:#16C784">✓ HEDEF +9,9 kapanista vuruldu (kural: cikis)</td></tr>
+<tr><td class="v">TMPOL</td><td>57,25</td><td>51,55 (−9,96)</td><td style="color:#EA3943">gun ici −%3 STOP caldi → ölçülen −3</td></tr>
+<tr><td class="v">GIPTA</td><td>26,20</td><td>25,50 (−2,67)</td><td style="color:#F3BA2F">−%2 realized kuraliyla gun bitti, cikis</td></tr>
+</table>
+<div class="leg">Izgara profili birebir isledi: 1 kazanc kuyrugu + 2 kucuk kayip — 313 islemlik olcumun (ort +1,86/islem) canli dogrulamasi. Kart suresi doldu, kovalanmaz.</div></div>
 <button class="tara" onclick="document.getElementById('nasil').style.display='block'">TARA</button>
 <div id="nasil" class="nasil">Tarama bu sayfada calismaz. BIST_Radar.py --mod tara
 ile guncellenir. Bu raporun tarama saati yukarida yazar.</div>
