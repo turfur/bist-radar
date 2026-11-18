@@ -54,7 +54,7 @@ ile guncellenir. Bu raporun tarama saati yukarida yazar.</div>
 <div class="warn">Olasilik tarar, garanti vermez. Tek pozisyon portfoyun %5ini gecmesin.
 Tavan cozulurse stop. OLCM: mekanik sinyal takibi -%4/ay -> tavan gunu kovalanmaz,
 geri cekilmede girilir. Egitim amacli, yatirim tavsiyesi degildir.</div>
-<div class="warn"><b>PARA KUTUSU - tek aksiyon kurali (olculmus):</b> izgara: RADARDA kartina <b>KAPANISTA</b> gir, pozisyon &lt;= %5, stop -%3, hedef +%8, 3 gunde hedef gelmezse cik. 313 islemde %46 kazanc, ort <b>+1.86/islem</b>. Medyan islem KAYIPDIR - 10 islemin ~5 tanesi zarar, kazanc sag kuyruktan gelir, sabir sart. Bugun RADARDA sinyali: 0 -> beklenti 0.0 (islem basi +1.86 x 0).<br>DISIPLIN: gun icinde -%2 realized zarar -> gun biter. TAVAN GUNU GIRILMEZ. BOSALTIM karti = elindeki icin CIKIS. RADARDA kutusuna bu kurallar disinda islem acma. <b>MODEL GIRIS - TOP-3 ayri kuraldir</b>: sinyalden sonraki seans kapanisinda gir, pozisyon &lt;= %5, stop -%3, hedef +%8, 5. gun zorunlu cikis - ikinci karne sayacindan olculur. Bu kutudaki kurallar disinda islem acma.</div>
+<div class="warn"><b>PARA KUTUSU - tek aksiyon kurali (olculmus):</b> izgara: RADARDA kartina <b>KAPANISTA</b> gir, pozisyon &lt;= %5, stop -%3, hedef +%8, 3 gunde hedef gelmezse cik. 313 islemde %46 kazanc, ort <b>+1.86/islem</b>. Medyan islem KAYIPDIR - 10 islemin ~5 tanesi zarar, kazanc sag kuyruktan gelir, sabir sart. Bugun RADARDA sinyali: 0 -> beklenti 0.0 (islem basi +1.86 x 0).<br>DISIPLIN: gun icinde -%2 realized zarar -> gun biter. TAVAN GUNU GIRILMEZ. BOSALTIM karti = elindeki icin CIKIS. RADARDA kutusuna bu kurallar disinda islem acma. RADARDA canli giris 18.11 itibariyla durduruldu; bu kutu tarihsel kural referansidir, 16.12 tarihine kadar yeni RADARDA islemi yok. <b>MODEL GIRIS - TOP-3 ayri kuraldir</b>: sinyalden sonraki seans kapanisinda gir, pozisyon &lt;= %5, stop -%3, hedef +%8, 5. gun zorunlu cikis - ikinci karne sayacindan olculur. Bu kutudaki kurallar disinda islem acma.</div>
 <h3 style="color:#16C784">YARIN SABAH - ne yapacagim listesi</h3>
 <div class="leg">RADARDA = OLCUM (canli giris durduruldu) | IZLE = sabah hacmi beklenir |
 KILITLI = dokunulmaz</div>
@@ -177,7 +177,7 @@ her yil listelerde gorunur.</div>
 <div class="warn">Giris sinyal kapanisinda + stop -%3 + hedef +%8 = +%1.86/islem, %46 kazanc
 (313 islem). Acilis girisi kaybettirir (-%4/ay). 3-GUN KURALI: hedef 3 gunde gelmediyse cik
 (tavandan ilk -%5 medyan 4. gun). -%5 stop +%8 hedef = %49.8 kazanc ama +%1.21/islem
-(daha az kayip, daha az kazanc). Kural karta stop/hedef olarak ISLENMISTIR.
+(daha az kayip, daha az kazanc). Kural karta stop/hedef olarak ISLENMISTIR. Bu satir eski sinyal-kapanisi olcumudur; tarama kapanistan sonra calistigi icin doldurulamaz. Canli kuralin doldurulabilir sonucu -0,90 (teyitli T+1 kapanis). 16.12'ye kadar canli giris yok.
 SIKISMA/YATAY "TOPLAMA" OKUYUSU: 130k ornekte lift 0.2-0.5x, medyan ~0 -> yatay/sikisma
 bölgesinde bekleme yapma; toplama sinyaliyle girilmez. Av hareketli/seri isimlerde,
 bosaltim karti CIKIS icindir (bosaltim sonrasi 5 gunde %20 bounce var ama medyan eksi =
